@@ -1,0 +1,39 @@
+[user]
+        name = 
+        email = 
+[color]
+        branch = auto
+        diff = auto
+        status = auto
+        pager = true
+[diff]
+        tool = meld 
+[difftool "vscode"]
+        cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "meld"]
+        cmd = meld $LOCAL $REMOTE
+[alias]
+        d = difftool
+        slog = log --name-status
+        flow = log --pretty-fuller
+        lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+        lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+        lg = !"git lg1"
+log1 = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(magenta)<%an>%Creset' --abbrev-commit --date=relative
+
+[pull]
+        rebase = true
+[core]
+        pager = less -R
+[merge]
+        tool = vscode
+[mergetool "vscode"]
+        cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[mergetool "meld"]
+    cmd = meld --diff $BASE $LOCAL $REMOTE --output $MERGED
+[push]
+    default = current
+[fetch]
+    prune = true
+[branch]
+    sort = -committerdate
