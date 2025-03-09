@@ -7,6 +7,12 @@
         status = auto
         pager = true
 
+# To have different projects use different configs (e.g. work account / private repo with different user configuration) use something like
+# [includeIf "gitdir:~/projects/work/"]
+#         path = ~/projects/work/.gitconfig
+# [includeIf "gitdir:~/projects/private/"]
+#         path = ~/projects/private/.gitconfig
+
 ######
 # This part is taken from here: https://blog.gitbutler.com/how-git-core-devs-configure-git/
 
@@ -81,7 +87,8 @@
         log1 = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(magenta)<%an>%Creset' --abbrev-commit --date=relative
         # -w: ignore whitespace, -C -C -C detects if lines were moved/copied to find the original author.
         blame = blame -w -C -C -C
-        
+
+# Use git maintenance start to add scheduled maintenance. Will add a [maintenance] section.
 
 
 
