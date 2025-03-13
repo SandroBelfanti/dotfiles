@@ -1,0 +1,13 @@
+set prompt="%{\033[94m%}${USER}%{\033[0m%}@%{\033[94m%}%M%{\033[0m%}:%c0%{\033[36m%}>%{\033[0m%} "
+
+## Check if the current directory is a Git repository ##
+alias __is_git_repo 'git rev-parse --is-inside-work-tree >& /dev/null && echo "true"'
+
+if (`__is_git_repo` == "true") then
+    alias __git_current_branch 'git rev-parse --abbrev-ref HEAD >& /dev/null && echo "`git rev-parse --abbrev-ref HEAD`"'
+    if ( $?tcsh ) then
+        alias precmd 'set prompt="%{\033[94m%}${USER}%{\033[0m%}@%{\033[94m%}%M%{\033[0m%}:{%{\033[32m%}`__git_current_branch`%{\033[0m%}}:%c0%{\033[36m%}>%{\033[0m%} "'
+    else
+        alias precmd 'set prompt="${USER}@%M:`__git_current_branch`:%c0> "'
+    endif
+endif
