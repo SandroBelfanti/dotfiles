@@ -24,6 +24,12 @@ setenv VISUAL vim
   
 bindkey -k up history-search-backward
 bindkey -k down history-search-forward
+# The cryptic strings are from cat -v and pressing the key combination
+# Ctrl+backspace
+bindkey "^H" backward-delete-word
+# Ctrl+delete
+bindkey "\e[3;5~" delete-word
+# delete
 bindkey "\e[3~" delete-char
 
 source ~/.alias
